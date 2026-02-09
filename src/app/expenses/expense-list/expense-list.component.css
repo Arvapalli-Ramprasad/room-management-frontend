@@ -1,0 +1,209 @@
+/* ================= BODY & MAIN CONTAINER ================= */
+body, .maincontainer {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f6fa;
+  color: #333;
+}
+
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ================= TOP BAR ================= */
+.top-bar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  /* background-color: #5b5fc7; */
+  color: black;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.search-add-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.profile-info mat-icon {
+  font-size: 32px;
+  color: black;
+}
+
+/* ================= CONTAINER: MODULES + TABLE ================= */
+.container {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* ================= MODULES SIDEBAR ================= */
+.modules {
+  flex: 0 0 220px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  height: calc(100vh - 80px); /* full height minus topbar */
+  position: sticky;
+  top: 80px;
+  overflow-y: auto;
+}
+
+.modules-title {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.modules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modules-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  color: #444;
+}
+
+.modules-list li:hover {
+  background-color: #eef2ff;
+}
+
+.modules-list li.active {
+  background-color: #c7d2fe;
+  font-weight: 600;
+}
+
+/* ================= EXPENSE TABLE ================= */
+.expensetable {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 15px;
+  overflow: auto;
+  max-height: calc(100vh - 80px); /* allows scrolling inside table */
+}
+
+/* Make table width full */
+.full-width-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+/* ================= TABLE HEADER STYLES ================= */
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  background-color: #1e2a78; /* professional blue */
+  color: #fff;
+  font-weight: 700; /* thick text */
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.mat-header-cell {
+  font-weight: 700;
+  color: #fff; /* white text */
+  background-color: #1e2a78; /* same blue as header row */
+  border-bottom: 2px solid #0f174b;
+  text-transform: uppercase;
+  padding: 12px 10px;
+}
+
+/* ================= TABLE BODY ================= */
+.mat-cell {
+  color: #333;
+  background-color: #fff;
+  padding: 12px 10px;
+}
+
+.mat-row:hover {
+  background-color: #eef2ff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Zebra striping */
+.mat-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Icon buttons */
+.mat-icon-button {
+  margin: 0 2px;
+  transition: transform 0.2s ease;
+}
+
+.mat-icon-button:hover {
+  transform: scale(1.1);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .modules {
+    flex: none;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+  }
+
+  .expensetable {
+    max-height: none;
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+}

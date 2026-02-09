@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Edit Room: {{ room.roomNumber }}</h2>
+<mat-dialog-content>
+  <mat-form-field class="full-width">
+    <mat-label>Building Name</mat-label>
+    <input matInput [(ngModel)]="room.buildingName">
+  </mat-form-field>
+
+  <!-- Add similar fields for rent, room type, etc. -->
+
+  <mat-form-field class="full-width">
+    <mat-label>Student IDs</mat-label>
+    <textarea matInput [value]="room.studentIds?.join(', ') || ''" disabled></textarea>
+  </mat-form-field>
+
+  <button mat-stroked-button color="accent" (click)="openAddCandidateDialog()">Add Candidates</button>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="saveChanges()">Save</button>
+</mat-dialog-actions>

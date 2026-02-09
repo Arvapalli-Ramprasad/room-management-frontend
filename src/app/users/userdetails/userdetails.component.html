@@ -1,0 +1,187 @@
+<div class="user-profile-container" *ngIf="user">
+
+  <!-- ================= PROFILE HEADER ================= -->
+  <mat-card class="profile-header">
+    <div class="header-content">
+
+      <div class="avatar">
+        <mat-icon class="avatar-icon">account_circle</mat-icon>
+      </div>
+
+      <div class="header-text">
+        <h2>{{ user.name }}</h2>
+        <p>{{ user.email }}</p>
+
+        <mat-chip color="primary" selected *ngIf="user.active">Active</mat-chip>
+        <mat-chip color="warn" selected *ngIf="!user.active">Inactive</mat-chip>
+      </div>
+
+    </div>
+  </mat-card>
+
+  <!-- ================= PERSONAL DETAILS ================= -->
+  <mat-card class="section-card">
+    <mat-card-title>Personal Details</mat-card-title>
+    <mat-divider></mat-divider>
+
+    <div class="grid">
+
+      <!-- Gender -->
+      <div class="editable-field">
+        <strong>Gender:</strong>
+
+        <span *ngIf="!editMode.gender">
+          {{ user.gender }}
+          <button mat-icon-button (click)="enableEdit('gender')">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </span>
+
+        <span *ngIf="editMode.gender">
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="user.gender">
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+              <mat-option value="other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-icon-button color="primary" (click)="saveField('gender')">
+            <mat-icon>check</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit('gender')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="editable-field">
+        <strong>DOB:</strong>
+
+        <span *ngIf="!editMode.dateOfBirth">
+          {{ user.dateOfBirth | date }}
+          <button mat-icon-button (click)="enableEdit('dateOfBirth')">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </span>
+
+        <span *ngIf="editMode.dateOfBirth">
+          <mat-form-field appearance="outline">
+            <input matInput type="date" [(ngModel)]="user.dateOfBirth">
+          </mat-form-field>
+
+          <button mat-icon-button color="primary" (click)="saveField('dateOfBirth')">
+            <mat-icon>check</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit('dateOfBirth')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+      </div>
+
+      <!-- Address -->
+      <div class="editable-field full-width">
+        <strong>Address:</strong>
+
+        <span *ngIf="!editMode.address">
+          {{ user.address }}
+          <button mat-icon-button (click)="enableEdit('address')">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </span>
+
+        <span *ngIf="editMode.address">
+          <mat-form-field appearance="outline" class="full-width">
+            <textarea matInput rows="2" [(ngModel)]="user.address"></textarea>
+          </mat-form-field>
+
+          <button mat-icon-button color="primary" (click)="saveField('address')">
+            <mat-icon>check</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit('address')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+      </div>
+
+    </div>
+  </mat-card>
+
+  <!-- ================= CONTACT DETAILS ================= -->
+  <mat-card class="section-card">
+    <mat-card-title>Contact Information</mat-card-title>
+    <mat-divider></mat-divider>
+
+    <div class="grid">
+
+      <!-- Phone -->
+      <div class="editable-field">
+        <strong>Phone:</strong>
+
+        <span *ngIf="!editMode.phoneNumber">
+          {{ user.phoneNumber }}
+          <button mat-icon-button (click)="enableEdit('phoneNumber')">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </span>
+
+        <span *ngIf="editMode.phoneNumber">
+          <mat-form-field appearance="outline">
+            <input matInput [(ngModel)]="user.phoneNumber">
+          </mat-form-field>
+
+          <button mat-icon-button color="primary" (click)="saveField('phoneNumber')">
+            <mat-icon>check</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit('phoneNumber')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+      </div>
+
+      <!-- Emergency Contact -->
+      <div class="editable-field">
+        <strong>Emergency:</strong>
+
+        <span *ngIf="!editMode.emergencyContact">
+          {{ user.emergencyContact }}
+          <button mat-icon-button (click)="enableEdit('emergencyContact')">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </span>
+
+        <span *ngIf="editMode.emergencyContact">
+          <mat-form-field appearance="outline">
+            <input matInput [(ngModel)]="user.emergencyContact">
+          </mat-form-field>
+
+          <button mat-icon-button color="primary" (click)="saveField('emergencyContact')">
+            <mat-icon>check</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit('emergencyContact')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+      </div>
+
+    </div>
+  </mat-card>
+
+  <!-- ================= ROOM ================= -->
+  <mat-card class="section-card">
+    <mat-card-title>Room Information</mat-card-title>
+    <mat-divider></mat-divider>
+
+    <div class="grid">
+      <div><strong>Room ID:</strong> {{ user.roomId }}</div>
+      <div><strong>Move In:</strong> {{ user.moveInDate || '—' }}</div>
+      <div><strong>Move Out:</strong> {{ user.moveOutDate || '—' }}</div>
+    </div>
+
+    <button mat-stroked-button color="primary" (click)="openRoomDetails(user.roomId)">
+      View Room Details
+    </button>
+  </mat-card>
+
+</div>

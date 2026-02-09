@@ -1,0 +1,62 @@
+<div class="container">
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="left-section">
+      <h1 class="title">Rooms List</h1>
+
+      <div class="search-box">
+        <input 
+          type="text" 
+          placeholder="Search rooms..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="onSearchInputChange(searchTerm)"
+        >
+        <span class="icon"></span>
+      </div>
+
+      <button class="add-btn" (click)="openAddRoomDialog()">
+        Add Room
+      </button>
+    </div>
+
+    <div class="profile">
+      <span class="profile-icon">👤</span>
+      <span class="profile-name">{{ userName }}</span>
+    </div>
+  </div>
+
+  <!-- Table List -->
+  <div class="table-wrapper">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Room No.</th>
+          <th>Building</th>
+          <th>Rent</th>
+          <th>Owner</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let room of rooms" (click)="openRoomDetails(room)">
+          <td>{{ room.roomNumber }}</td>
+          <td>{{ room.buildingName }}</td>
+          <td>₹{{ room.monthlyRent }}</td>
+          <td>{{ room.ownerContact }}</td>
+          <td>
+            <button class="edit-btn" (click)="editRoom(room); $event.stopPropagation()">✏️</button>
+            <button class="delete-btn" (click)="deleteRoom(room); $event.stopPropagation()">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025 Room Management System
+  </footer>
+
+</div>

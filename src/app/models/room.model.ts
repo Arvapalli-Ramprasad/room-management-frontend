@@ -1,0 +1,29 @@
+export class Room {
+  id?: string;
+  roomNumber?: string;
+  floorNumber?: string;
+  buildingName?: string;
+  totalCapacity?: number;
+  currentOccupancy?: number;
+  monthlyRent?: number;
+  totalAmountToBeCollected?: number;
+  totalAmountCollected?: number;
+  balance?: number;
+  securityDeposit?: number;
+  address?: string;
+  amenities?: string[];
+  studentIds?: string[];
+  notes?: string;
+  active?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  maintenanceStatus?: string;
+  roomType?: string;
+  sharedBathroom?: boolean;
+  furnishingStatus?: string;
+  ownerContact?: string;
+  rentDueDate?: string;
+  lastInspectionDate?: string;
+  photos?: string[];
+  createdBy?: string;
+}

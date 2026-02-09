@@ -1,0 +1,54 @@
+
+<div class="heading">
+  <h2 mat-dialog-title>Add New Room</h2>
+</div>
+
+<form [formGroup]="roomForm" (ngSubmit)="onSubmit()" mat-dialog-content class="form">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Room Number</mat-label>
+    <input matInput formControlName="roomNumber" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Floor Number</mat-label>
+    <input matInput formControlName="floorNumber">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Building Name</mat-label>
+    <input matInput formControlName="buildingName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Total Capacity</mat-label>
+    <input matInput type="number" formControlName="totalCapacity" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Monthly Rent</mat-label>
+    <input matInput type="number" formControlName="monthlyRent" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Address</mat-label>
+    <textarea matInput formControlName="address"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Room Type</mat-label>
+    <input matInput formControlName="roomType">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Owner Contact</mat-label>
+    <input matInput formControlName="ownerContact">
+  </mat-form-field>
+
+  <mat-slide-toggle formControlName="active">Active</mat-slide-toggle>
+
+  <div mat-dialog-actions class="button">
+    <button mat-button type="button" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="roomForm.invalid">Add Room</button>
+  </div>
+</form>

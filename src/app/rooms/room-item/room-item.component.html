@@ -1,0 +1,293 @@
+<!-- <ng-container *ngIf="!isLoading; else loading">
+  <mat-card class="room-details-card">
+    <mat-card-title>
+      Room Details: {{ editedRoom.roomNumber }} - {{ editedRoom.buildingName }}
+    </mat-card-title>
+
+    <mat-card-content class="room-details-content">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Building Name</mat-label>
+        <input matInput [(ngModel)]="editedRoom.buildingName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Floor Number</mat-label>
+        <input matInput type="number" [(ngModel)]="editedRoom.floorNumber">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Room Number</mat-label>
+        <input matInput [(ngModel)]="editedRoom.roomNumber">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Room Type</mat-label>
+        <input matInput [(ngModel)]="editedRoom.roomType">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput [(ngModel)]="editedRoom.address">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Monthly Rent</mat-label>
+        <input matInput type="number" [(ngModel)]="editedRoom.monthlyRent">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Owner Contact</mat-label>
+        <input matInput [(ngModel)]="editedRoom.ownerContact">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Total Amount to be Collected</mat-label>
+        <input matInput [(ngModel)]="editedRoom.totalAmountToBeCollected">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Total Amount Collected</mat-label>
+        <input matInput [(ngModel)]="editedRoom.totalAmountCollected">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Balance Amount in Room</mat-label>
+        <input matInput [(ngModel)]="editedRoom.balance">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Security Deposit</mat-label>
+        <input matInput [(ngModel)]="editedRoom.securityDeposit">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Candidates in Room</mat-label>
+        <input matInput [(ngModel)]="editedRoom.studentIds">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Amenities</mat-label>
+        <input matInput [(ngModel)]="editedRoom.amenities">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Notes</mat-label>
+        <input matInput [(ngModel)]="editedRoom.notes">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>IS Room Active</mat-label>
+        <input matInput [(ngModel)]="editedRoom.active">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Created On</mat-label>
+        <input matInput [(ngModel)]="editedRoom.createdAt">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Maintanance Status</mat-label>
+        <input matInput [(ngModel)]="editedRoom.maintenanceStatus">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Shared Bathroom</mat-label>
+        <input matInput [(ngModel)]="editedRoom.sharedBathroom">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Furnishing Status</mat-label>
+        <input matInput [(ngModel)]="editedRoom.furnishingStatus">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Rent Due Date</mat-label>
+        <input matInput [(ngModel)]="editedRoom.rentDueDate">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Inspection Date</mat-label>
+        <input matInput [(ngModel)]="editedRoom.lastInspectionDate">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Room pics</mat-label>
+        <input matInput [(ngModel)]="editedRoom.photos">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Created ById</mat-label>
+        <input matInput [(ngModel)]="editedRoom.createdBy">
+      </mat-form-field>
+
+
+      <div class="room-actions">
+        <button mat-raised-button color="primary" (click)="saveRoomChanges()">Save</button>
+        <button mat-raised-button color="accent" (click)="navigateToUserForm()">Add User</button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template> -->
+
+
+
+<div class="room-details-container" *ngIf="!isLoading; else loading">
+
+  <!-- Header -->
+  <div class="room-header">
+    <h1> {{ editedRoom.buildingName }} </h1>
+    <h3>
+       Room Number: {{ editedRoom.roomNumber }}
+    </h3>
+  </div>
+
+  <!-- Main layout -->
+  <div class="room-layout">
+
+    <!-- LEFT: Image Gallery -->
+    <div class="room-gallery">
+
+      <!-- MAIN IMAGE -->
+      <img
+        class="main-photo"
+        *ngIf="editedRoom?.photos?.length"
+        [src]="selectedPhoto"
+        (click)="openFullscreen(selectedPhoto)"
+      />
+
+      <p class="photo-caption">
+        Spacious and well-furnished room with modern amenities.
+      </p>
+
+      <!-- THUMBNAILS -->
+      <div class="thumbnail-row" *ngIf="editedRoom?.photos?.length">
+        <img
+          *ngFor="let photo of editedRoom.photos"
+          [src]="photo"
+          (click)="selectPhoto(photo)"
+        />
+      </div>
+      
+      <!-- VIDEOS SECTION -->
+<div class="room-videos" *ngIf="editedRoom?.photos?.length">
+
+  <h3 class="video-title">Room Videos</h3>
+
+  <!-- VIDEO GRID -->
+      <div class="video-grid">
+        <video
+          *ngFor="let video of editedRoom.photos"
+          class="room-video"
+          [src]="video"
+          controls
+          preload="metadata"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    </div>
+
+      <!-- UPLOAD -->
+      <div class="upload-box">
+        <label>Upload Room Photos: </label>
+        <input type="file" multiple (change)="onFileSelected($event)">
+        <button class="btn secondary" (click)="uploadPhotos()">Upload Photos</button>
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT: Details / Booking-style panel -->
+    <div class="room-info">
+      <div class="roomdetail-header">
+        <h2>Room Details</h2>
+        <button class="btn secondary" (click)="navigateToUserForm()">Add User</button>
+      </div>
+      
+
+      <div class="info-grid">
+
+        <div class="info-field">
+          <label>Room Type</label>
+          <input [(ngModel)]="editedRoom.roomType">
+        </div>
+
+        <div class="info-field">
+          <label>Floor</label>
+          <input type="number" [(ngModel)]="editedRoom.floorNumber">
+        </div>
+
+        <div class="info-field">
+          <label>Monthly Rent</label>
+          <input type="number" [(ngModel)]="editedRoom.monthlyRent">
+        </div>
+
+        <div class="info-field">
+          <label>Security Deposit</label>
+          <input type="number" [(ngModel)]="editedRoom.securityDeposit">
+        </div>
+
+        <div class="info-field">
+          <label>Owner Contact</label>
+          <input [(ngModel)]="editedRoom.ownerContact">
+        </div>
+
+        <div class="info-field">
+          <label>Furnishing</label>
+          <input [(ngModel)]="editedRoom.furnishingStatus">
+        </div>
+
+        <div class="info-field">
+          <label>Shared Bathroom</label>
+          <input type="checkbox" [(ngModel)]="editedRoom.sharedBathroom">
+        </div>
+
+        <div class="info-field">
+          <label>Active</label>
+          <input type="checkbox" [(ngModel)]="editedRoom.active">
+        </div>
+
+        <div class="info-field full">
+          <label>Amenities</label>
+          <input [(ngModel)]="editedRoom.amenities">
+        </div>
+
+        <div class="info-field full">
+          <label>Notes</label>
+          <textarea [(ngModel)]="editedRoom.notes"></textarea>
+        </div>
+
+      </div>
+
+      <div class="room-actions">
+        <button class="btn primary" (click)="saveRoomChanges()">Save Updates</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div
+  class="fullscreen-overlay"
+  *ngIf="isFullscreen"
+  (click)="closeFullscreen()"
+>
+  <img [src]="fullscreenPhoto">
+</div>
+
+
+<ng-template #loading>
+  <div class="loading-spinner">Loading...</div>
+</ng-template>
+
+

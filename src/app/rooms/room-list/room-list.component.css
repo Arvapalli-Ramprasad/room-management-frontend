@@ -1,0 +1,165 @@
+/* MAIN CONTAINER */
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 100px auto 60px;
+  gap: 10px;
+  background: #f5f6fa;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  overflow: hidden;  /* ✅ MUST be hidden so table-wrapper scrolls */
+}
+
+/* ==========================
+      TOP BAR
+========================== */
+.top-bar {
+  width: 90vw;
+  margin-left: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  flex-wrap: wrap;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* SEARCH BAR */
+.search-box {
+  position: relative;
+  width: 300px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 35px 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.search-box .icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 18px;
+  color: #3478ed;
+}
+
+/* ADD BUTTON */
+.add-btn {
+  padding: 9px 15px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #435ded;
+  color: white;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background: #0423ee;
+}
+
+/* PROFILE */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-icon {
+  font-size: 28px;
+}
+
+.profile-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* ==========================
+      TABLE WRAPPER
+========================== */
+.table-wrapper {
+  height: calc(100vh - 200px);
+  overflow-y: auto;     /* ✅ SCROLL WORKS HERE ONLY */
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 90vw;
+  margin-left: 60px;
+}
+
+/* TABLE */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  display: table;
+}
+
+/* Sticky Header */
+.custom-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #3f51b5;
+}
+
+.custom-table thead th {
+  padding: 14px;
+  font-size: 16px;
+  text-align: left;
+  color: white;
+  font-weight: bold;
+}
+
+/* Normal Table Body */
+.custom-table tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #e6ecff;
+  cursor: pointer;
+}
+
+/* ACTION BUTTONS */
+.edit-btn, .delete-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* FOOTER */
+.footer {
+  background: #ffffff;
+  color: black;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 16px;
+}

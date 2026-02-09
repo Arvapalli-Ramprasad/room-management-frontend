@@ -1,0 +1,58 @@
+/* 1. Host background setup */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  /* background: url('https://images.unsplash.com/photo-1557800636-894a64c1696f') no-repeat center center / cover; */
+  /* background-attachment: fixed;  */
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Nice deep shadow */
+  margin: 40px;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+  box-shadow: 0 8px 24px rgba(1, 108, 41, 0.2); /* Nice deep shadow */
+  color: #2e7d32;
+  padding: 20px;
+  margin-bottom: 50px;
+  
+}
+
+/* 2. Styling the mat-card (form container) */
+mat-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.95); /* Slight transparency for soft feel */
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Nice deep shadow */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 3. Heading style */
+mat-card h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #3f51b5; /* Angular Material blue */
+}
+
+/* 4. Full width form fields */
+mat-form-field {
+  width: 95%;
+}
+
+/* 5. Submit button style */
+button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  
+}
