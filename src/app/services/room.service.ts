@@ -7,35 +7,35 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RoomService {
-  private apiUrl = 'http://localhost:8080/rooms';
+  private apiBaseUrl = 'http://localhost:8080/rooms';
 
   constructor(private http: HttpClient) {}
 
   getAllRooms(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/getAllRooms`);
+    return this.http.get<any>(`${this.apiBaseUrl}/getAllRooms`);
   }
 
   searchRooms(term: string): Observable<Room[]> {
-  return this.http.get<Room[]>(`${this.apiUrl}/search/${term}`);
+  return this.http.get<Room[]>(`${this.apiBaseUrl}/search/${term}`);
 }
 
   getRoomById(id: string): Observable<Room> {
-    return this.http.get<Room>(`${this.apiUrl}/getRoom?id=${id}`);
+    return this.http.get<Room>(`${this.apiBaseUrl}/getRoom?id=${id}`);
   }
 
   addRoom(room: Room): Observable<any> {
-    return this.http.post(`${this.apiUrl}/addRoom`, room);
+    return this.http.post(`${this.apiBaseUrl}/addRoom`, room);
   }
 
   updateRoom(id: string, room: Room): Observable<Room> {
-    return this.http.put(`${this.apiUrl}/updateRoom/${id}`, room);
+    return this.http.put(`${this.apiBaseUrl}/updateRoom/${id}`, room);
   }
 
   deleteRoom(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/deleteRoom/${id}`);
+    return this.http.delete(`${this.apiBaseUrl}/deleteRoom/${id}`);
   }
   createRoom(roomData: Room): Observable<Room> {
-    return this.http.post(`${this.apiUrl}/add`, roomData);
+    return this.http.post(`${this.apiBaseUrl}/add`, roomData);
   }
 
   uploadRoomPhotos(roomId: string, files: File[]): Observable<string[]> {

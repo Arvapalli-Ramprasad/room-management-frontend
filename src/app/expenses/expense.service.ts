@@ -27,7 +27,7 @@ export interface Expense {
 })
 export class ExpenseService {
 
-  private baseUrl = 'http://localhost:8080/expences';
+  private apiBaseUrl = 'http://localhost:8080/expences';
 
   constructor(private http: HttpClient) { }
 
@@ -38,7 +38,7 @@ export class ExpenseService {
 
   // Add new expense
   addExpense(expense: Expense): Observable<Expense> {
-    return this.http.post<Expense>(`${this.baseUrl}/addExpense`, expense);
+    return this.http.post<Expense>(`${this.apiBaseUrl}/addExpense`, expense);
   }
 
   // // Update expense (PUT)
@@ -54,7 +54,7 @@ export class ExpenseService {
   // Delete expense by id
   deleteExpense(id: string): Observable<String> {
 
-     return this.http.delete(`${this.baseUrl}/${id}`, {
+     return this.http.delete(`${this.apiBaseUrl}/${id}`, {
       responseType: 'text'
     });
   }
@@ -66,7 +66,7 @@ export class ExpenseService {
 
   // Search expenses4
   searchExpenses(text: string): Observable<Expense[]> {
-    return this.http.get<Expense[]>(`${this.baseUrl}/search/${text}`);
+    return this.http.get<Expense[]>(`${this.apiBaseUrl}/search/${text}`);
   } 
 
   // // Get all expenses by room
@@ -81,11 +81,11 @@ export class ExpenseService {
 
   // Optional: get all expenses (if backend has generic get all)
   getAllExpenses(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/getAllExpensesByRoomId`);
+    return this.http.get<any>(`${this.apiBaseUrl}/getAllExpensesByRoomId`);
   }
 
   getUserExpenses(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/userExpenses`);
+    return this.http.get<any>(`${this.apiBaseUrl}/userExpenses`);
   }
 
 }
