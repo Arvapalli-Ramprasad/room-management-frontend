@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://16.170.230.170:8080',
-  apiBaseUrl1: 'http://16.170.230.170:8080'
+  apiBaseUrl: 'https://api.roommanager.in',
+  apiBaseUrl1: 'https://api.roommanager.in'
 };
