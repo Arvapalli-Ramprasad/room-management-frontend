@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RoomService {
-  private apiBaseUrl = environment.apiUrl;
+  private apiBaseUrl = environment.apiUrl+'/rooms';
 
   constructor(private http: HttpClient) {}
 
