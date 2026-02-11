@@ -47,7 +47,7 @@ export class RoomService {
   });
 
   return this.http.post<string[]>(
-    `http://localhost:8080/rooms/${roomId}/photos`,
+    `${this.apiBaseUrl}/{roomId}/photos`,
     formData
   );
 }

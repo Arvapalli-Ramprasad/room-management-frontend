@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface Expense {
   id?: string;
@@ -27,7 +28,7 @@ export interface Expense {
 })
 export class ExpenseService {
 
-  private apiBaseUrl = 'http://localhost:8080/expences';
+  private apiBaseUrl = environment.apiUrl+'/expences';
 
   constructor(private http: HttpClient) { }
 
