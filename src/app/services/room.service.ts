@@ -47,7 +47,7 @@ export class RoomService {
   });
 
   return this.http.post<string[]>(
-    `${this.apiBaseUrl}/{roomId}/photos`,
+    `${this.apiBaseUrl}/${roomId}/photos`,
     formData
   );
 }
